@@ -1,0 +1,69 @@
+<html ng-app="app">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1">
+
+  <!-- EXTERNAL -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+  <link href="https://code.jquery.com/ui/1.11.2/themes/flick/jquery-ui.css" rel="stylesheet">
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-cookies.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.11/angular-ui-router.min.js"></script>
+
+  <!-- BOOTSTRAP -->
+  <script src="/assets/libs/UI-Bootstrap/ui-bootstrap-tpls-0.11.2.min.js"></script>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- IMPORTING ANGULAR APP MODULE + ROUTER -->
+  <script src="/app.module.js"></script>
+  <script src="/app.routes.js"></script>
+
+  <script src="/shared/sidebar/sidebar.controller.js"></script>
+  <script src="/shared/searchbar/searchbar.controller.js"></script>
+  <script src="/services/data.service.js"></script>
+  <script src="/services/queue-preferences.service.js"></script>
+  <script src="/services/authentication.service.js"></script>
+  <script src="/services/session.service.js"></script>
+  <script src="/services/user.service.js"></script>
+  <script src="/app.authentication.js"></script>
+
+  <script src="/services/sidebar.service.js"></script>
+
+  <!-- COMPONENTS -->
+  <script src="/components/queue/queue-sport.controller.js"></script>
+  <script src="/components/queue/queue-location.controller.js"></script>
+  <script src="/components/queue/queue-preferences.controller.js"></script>
+  <script src="/components/search/search-player.controller.js"></script>
+  <script src="/components/profile/view-profile.controller.js"></script>
+  <script src="/components/profile/autocomplete-sport-directive.js"></script>
+  <script src="/components/home/home.controller.js"></script>
+  <script src="/components/settings/settings.controller.js"></script>
+  <script src="/components/games/create-game.controller.js"></script>
+  <script src="/components/games/view-game.controller.js"></script>
+  <script src="/components/games/view-games.controller.js"></script>
+  <script src="/components/friends/view-friends.controller.js"></script>
+  <script src="/components/landing/form-auto-fill-fix.directive.js"></script>
+  <script src="/components/landing/login.controller.js"></script>
+  <script src="/components/landing/signup.controller.js"></script>
+
+  <!-- CSS -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <!-- Default Link Paths -->
+  <base href="/">
+
+</head>
+
+<body>
+  <div class="container-fluid">
+
+      <!-- @ROOT VIEW -->
+      <div ui-view="root"></div>
+
+  </div>
+</body>
+</html>

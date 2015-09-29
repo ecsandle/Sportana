@@ -1,0 +1,147 @@
+<body>
+	<p>
+		<div>
+			<div ng-show="viewProfile.isLoaded()" class="profile row">
+				<div class="row">
+					<div class="profileImageHolder col-md-3">
+						<img class="profileImage img-thumbnail" ng-src="{{viewProfile.getProfilePicture()}}"></img>
+					</div>	
+					<div class = "profileInfoHolder col-md-6">
+						<div class="profileNameHolder row" >
+							<div class="profileName" >
+								<div ng-hide="viewProfile.isEditing()">{{viewProfile.getFullName()}}, {{ viewProfile.getAge() }}</div>
+								<div class="profileEditNameInput" ng-show="viewProfile.isEditing()">
+									<input type="text" ng-model="editUser.firstname"></input>
+									<input type="text" ng-model="editUser.lastname"></input>
+									, {{ viewProfile.getAge() }}
+								</div>
+							</div>
+						</div>
+
+						<div class="profileCity row">
+							<div ng-hide="viewProfile.isEditing()">
+								{{ viewProfile.getCity() }}
+							</div>
+							<div ng-show="viewProfile.isEditing()">
+								<input type="text" ng-model="editUser.city"></input>
+							</div>
+						</div>
+					</div>	
+					<div class="profileButtonHolder col-md-3">
+						<button ng-show="viewProfile.isSelf() && !viewProfile.isEditing()" ng-click="viewProfile.editProfile()" class="profileSpecialButton btn btn-primary">
+							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
+							&nbsp;&nbsp;Edit Profile
+						</button> 
+
+						<button ng-show="!viewProfile.isFriend() && !viewProfile.isSelf()" ng-click="viewProfile.addFriend()" class="profileSpecialButton btn btn-success">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							&nbsp;Add Friend
+						</button>
+
+						<button ng-show="viewProfile.isFriend() && !viewProfile.isSelf()" ng-click="viewProfile.removeFriend()" class="profileSpecialButton btn btn-warning">
+							<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+							&nbsp;Remove Friend
+						</button> 
+
+						<button ng-show="viewProfile.isSelf() && viewProfile.isEditing()" ng-click="viewProfile.saveProfile()" class="profileSpecialButton btn btn-success">
+							<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+							&nbsp;Save
+						</button> 
+
+						<button ng-show="viewProfile.isSelf() && viewProfile.isEditing()" ng-click="viewProfile.cancelProfile()" class="profileSpecialButton btn btn-danger">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							&nbsp;Cancel
+						</button> 
+
+
+					</div>
+				</div>
+
+				<hr>
+
+				<div class="profileRatingContainer row">
+					<div class="profileCategoryTitle col-md-4">Rating</div>
+					<div class='col-md-8'>
+
+						<div class="ratingsHolder row">
+							<div class="col-xs-4">
+								<div class="row">
+									<div class="barGraphBarHolder">
+										<div class="barGraphBar" style="height: {{100/5 * viewProfile.getFriendliness()}}%;">
+											<div class="barGraphBarValue">{{ viewProfile.getFriendliness() }}</div>
+										</div>
+									</div>
+								</div>
+								<div class="barGraphLabel row">
+									Friendliness
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="row">
+									<div class="barGraphBarHolder">
+										<div class="barGraphBar" style="height: {{100/5 * viewProfile.getTimeliness()}}%;">
+
+											<div class="barGraphBarValue">{{ viewProfile.getTimeliness() }}</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="barGraphLabel row">
+									Timeliness
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="row">
+									<div class="barGraphBarHolder">
+										<div class="barGraphBar" style="height: {{100/5 * viewProfile.getSkill()}}%;">
+											<div class="barGraphBarValue">{{ viewProfile.getSkill() }}</div>
+										</div>
+									</div>
+								</div>
+								<div class="barGraphLabel row">
+									Skill
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+
+				<hr>
+
+				<div ng-show="viewProfile.isEditing()" class="row">
+					<input auto-complete ui-items="allSports" ng-model="selectedSport">
+					<input type="submit" value="Add Sport" class="btn btn-primary" ng-disabled="!isSportSelected()">
+				</div>
+
+				<div class="profileSportContainer row">
+					<div class="profileCategoryTitle col-md-4">Favorite Sports</div>
+					<div class='profileSportHolder col-md-8'>
+						<div class="profileSportList">
+
+							<div ng-show="viewProfile.isEditing()" ng-click="viewProfile.addSport()" class='profileSport btn btn-success'>
+								<img ng-src="/assets/img/sports/add.png"></img>
+								<div class="sportName">Add Sport</div>
+							</div>
+
+							<div ng-repeat="sport in viewProfile.getCurrentSports()" class='profileSport'>
+
+								<script type="text/javascript">
+									$(document).ready(function(){
+				    					$('[data-toggle="tooltip"]').tooltip();   
+									});
+								</script>
+
+								<img data-toggle="tooltip" tooltip data-placement="bottom" title="{{sport.sportsName}}" ng-src="{{sport.sportImage}}"></img>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</p>
+</body>

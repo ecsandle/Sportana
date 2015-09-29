@@ -1,0 +1,43 @@
+<!-- <h1 class="page-header">Join Game</h1>
+
+<div id="queue" ng-controller="QueueController as qCtrl">
+
+	<div ng-hide="qCtrl.gamesFound()" class="ng-hide">No games have been found matching your preferences.
+	<button ng-click="qCtrl.startQueue()" class="btn">Join Queue</button>
+	</div>
+
+	<div id="discovered-games" ng-show="qCtrl.gamesFound()" ng-controller="DiscoveredGamesController as dgCtrl">
+	<div class="discovered-game-row" ng-repeat="game in dgCtrl.games">
+		TODO : GAME INFO
+	</div>	
+	</div>
+</div> -->
+
+<!-- MAIN CONTENT -->
+	
+	<!-- LOOK FOR GAME (if not queued) -->
+	<!-- DISCOVERED GAMES (if queued && games found) -->
+	<!-- CREATE GAME (if no games found matching preferences) -->
+
+<div id="sportSelection" ng-controller="SportSelectionController as sportCtrl">
+	
+	<div id="instructions">
+		Select your preferred sports.
+		<button class="btn" ng-show="sportCtrl.hasSelectedSports()" ng-click="sportCtrl.finish()">Next</button>
+	</div>
+
+	<div id="sportPicker">
+    	<div class="sportPanel" ng-repeat="sport in sportCtrl.getSports()" ng-class="{selected: sportCtrl.isSelected(sport)}" ng-click="sportCtrl.toggle(sport)">
+    		<img class="sportIcon" ng-src="{{sport.icon}}"/>
+    		<br>{{sport.name}}<br>
+    		<span class="description">
+	    		{{sport.description}}
+    		</span>
+	   </div>
+	</div>
+
+	<div id="selectedSports">
+		<button class="btn" ng-repeat="sport in sportCtrl.getSelectedSports()" ng-click="sportCtrl.removeSport(sport)">{{sport.name}}  X</button>
+	</div>
+
+</div>
